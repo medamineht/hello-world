@@ -21,18 +21,14 @@
     <module>webapp</module>
   </modules>
 
-  <distributionManagement>
-        <repository>
-            <id>deployment</id>
-            <name>Internal Releases</name>
-            <url>http://192.168.1.18:8081/repository/SAMPLE-REL/</url>
-        </repository>
-        <snapshotRepository>
-            <id>deployment</id>
-            <name>Internal Snapshot Releases</name>
-            <url>http://192.168.1.18:8081/repository/SAMPLE-SNAP/</url>
-        </snapshotRepository>
+<distributionManagement>
+    <site>
+      <id>site-server</id>
+      <name>Test Project Site</name>
+      <url>file:///tmp/maven-project-site</url>
+    </site>
   </distributionManagement>
+
 
   <build>
     <plugins>

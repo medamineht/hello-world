@@ -1,0 +1,16 @@
+---
+- hosts: docker_server
+  become: true
+  tasks:
+    - name: stop previous version docker
+      shell: docker stop 4.3-project-maven-docker-push-ansible-versionning
+      ignore_errors: yes 
+    - name: remove stopped container
+      shell: docker rm -f 4.3-project-maven-docker-push-ansible-versionning
+      ignore_errors: yes 
+    - name: remove docker images
+      shell: docker image rm -f hadjtaiebsofttodo/4.3-project-maven-docker-push-ansible-versionning:latest
+      ignore_errors: yes 
+    - name: copy war onto tomcat servers
+      shell: docker run -d --name 4.3-project-maven-docker-push-ansible-versionning -p 8090:8080  hadjtaiebsofttodo/4.3-project-maven-docker-push-ansible-versionning:latest
+      ignore_errors: yes 

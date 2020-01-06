@@ -4,9 +4,13 @@
   tasks:
     - name: stop previous version docker
       shell: docker stop war_demo2
+      ignore_errors: yes 
     - name: remove stopped container
       shell: docker rm -f war_demo2
+      ignore_errors: yes 
     - name: remove docker images
       shell: docker image rm -f hadjtaiebsofttodo/war_demo2
+      ignore_errors: yes 
     - name: run container war_demo2
       shell: docker run -d --name war_demo2 -p 8090:8080 hadjtaiebsofttodo/war_demo2
+      ignore_errors: yes 

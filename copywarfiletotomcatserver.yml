@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: tomcat_server
   become: true
   tasks:
     - name: copy war file to tomcat server

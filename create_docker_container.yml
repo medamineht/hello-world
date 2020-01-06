@@ -1,0 +1,12 @@
+---
+- hosts: docker_server
+  become: true
+  tasks:
+    - name: stop previous version docker
+      shell: docker stop war_demo
+    - name: remove stopped container
+      shell: docker rm -f war_demo
+    - name: remove docker images
+      shell: docker image rm -f hadjtaiebsofttodo/war_demo
+    - name: copy war file to tomcat servers
+      shell: docker run -d --name war_demo -p 8090:8080 hadjtaiebsofttodo/war_demo

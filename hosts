@@ -1,2 +1,4 @@
 [tomcat_server]
 192.168.224.153
+[docker_server]
+192.168.224.152

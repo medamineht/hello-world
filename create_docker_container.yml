@@ -8,5 +8,5 @@
       shell: docker rm -f war_demo
     - name: remove docker images
       shell: docker image rm -f hadjtaiebsofttodo/war_demo
-    - name: copy war file to tomcat servers
+    - name: run container war_demo
       shell: docker run -d --name war_demo -p 8090:8080 hadjtaiebsofttodo/war_demo

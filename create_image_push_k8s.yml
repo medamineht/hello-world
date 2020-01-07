@@ -1,0 +1,19 @@
+---
+- hosts: docker_server
+  become: true
+
+  tasks:
+  - name: create docker image using war file
+    command: docker build -t k8s:latest .
+    args:
+      chdir: /opt/k8s-lab
+
+  - name: create tag to image
+    command: docker tag k8s hadjtaiebsofttodo/k8s
+
+  - name: push image on to dockerhub
+    command: docker push hadjtaiebsofttodo/k8s
+
+  - name: remove docker images form ansible server
+    command: docker rmi k8s:latest hadjtaiebsofttodo/k8s
+    ignore_errors: yes

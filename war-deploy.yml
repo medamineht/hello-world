@@ -1,0 +1,27 @@
+apiVersion: apps/v1 # w for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: war-deployment
+spec:
+  selector:
+    matchLabels:
+      app: war-devops-project
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+
+  template:
+    metadata:
+      labels:
+        app: war-devops-project
+    spec:
+      containers:
+      - name: war-devops-project
+        image: hadjtaiebsofttodo/k8s
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+

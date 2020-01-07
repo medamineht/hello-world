@@ -1,0 +1,19 @@
+---
+- name: create service for deployment
+  hosts: kubernetes
+#  become: true
+#  user: root
+
+  tasks:
+  - name: cp war-service
+    copy:
+      src: /opt/k8s-lab/war-service.yml
+      dest: /home/vagrant/war-service.yml
+
+  - name: delete a service
+    command: kubectl delete -f war-service.yml
+    ignore_errors: yes
+
+  - name: create a service
+    command: kubectl apply -f war-service.yml
+

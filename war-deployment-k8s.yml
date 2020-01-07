@@ -1,0 +1,21 @@
+---
+- name: Create pods using deployment
+  hosts: kubernetes
+#  become: true
+#  user: root
+
+  tasks:
+  - name: cp war-deployment
+    copy:
+      src: /opt/k8s-lab/war-deploy.yml
+      dest: /home/vagrant/war-deploy.yml
+
+  - name: delete a deployment
+    command: kubectl delete -f war-deploy.yml
+    ignore_errors: yes
+
+  - name: create a deployment
+    command: kubectl apply -f war-deploy.yml
+
+  - name: update deployment with new pods if image updated in docker hub
+    command: kubectl rollout restart deployment.v1.apps/war-deployment

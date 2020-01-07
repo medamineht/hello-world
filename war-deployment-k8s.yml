@@ -1,6 +1,6 @@
 ---
 - name: Create pods using deployment
-  hosts: kubernetes
+  hosts: k8s-server
 #  become: true
 #  user: root
 

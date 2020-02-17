@@ -1,6 +1,6 @@
 ---
 - hosts: docker_server
-  become: true
+  #become: true
   tasks:
     - name: stop previous version docker
       shell: docker stop war_demo2

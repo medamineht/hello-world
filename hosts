@@ -3,4 +3,4 @@
 [docker_server]
 192.168.224.152 ansible_user=ansadmin
 [k8s-server]
-192.168.224.200 ansible_user=vagrant
+192.168.224.230 ansible_user=vagrant
